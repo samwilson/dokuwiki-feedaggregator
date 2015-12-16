@@ -1,0 +1,16 @@
+{
+    "name": "samwilson/feedaggregator",
+    "description": "A DokuWiki plugin for aggregating multiple news feeds onto a single wiki page.",
+    "type": "library",
+    "require": {
+        "simplepie/simplepie": "^1.3"
+    },
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Sam Wilson",
+            "email": "sam@samwilson.id.au"
+        }
+    ],
+    "minimum-stability": "stable"
+}

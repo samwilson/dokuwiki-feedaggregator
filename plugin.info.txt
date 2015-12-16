@@ -1,0 +1,7 @@
+base   feedaggregator
+author Sam Wilson
+email  sam@samwilson.id.au
+date   2015-12-17
+name   feedaggregator plugin
+desc   A DokuWiki plugin for aggregating multiple news feeds onto a single wiki page.
+url    https://www.dokuwiki.org/plugin:feedaggregator
