@@ -44,7 +44,6 @@ class action_plugin_feedaggregator extends DokuWiki_Action_Plugin {
         $simplepie = new FeedParser();
         $ua = 'Mozilla/4.0 (compatible; DokuWiki feedaggregator plugin '.wl('', '', true).')';
         $simplepie->set_useragent($ua);
-        $simplepie->force_feed(true);
         $simplepie->set_feed_url($feeds);
 
         // Set up caching.
@@ -69,7 +68,7 @@ class action_plugin_feedaggregator extends DokuWiki_Action_Plugin {
                     ."<h2>".$item->get_title()."</h2>\n"
                     .$item->get_content()."\n"
                     ."<p>"
-                    ."  Published ".$item->get_date('j M Y')." "
+                    ."  <a href='".$item->get_permalink()."'>Published ".$item->get_date('j M Y')."</a> "
                     ."  in <a href='".$item->get_feed()->get_permalink()."'>".$item->get_feed()->get_title()."</a>"
                     ."</p>\n"
                     ."</div>\n\n";
