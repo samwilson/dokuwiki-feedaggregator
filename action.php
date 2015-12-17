@@ -37,6 +37,14 @@ class action_plugin_feedaggregator extends DokuWiki_Action_Plugin {
         }
         $event->preventDefault();
 
+        // See if we need a token and whether it matches.
+        $requiredToken = $this->getConf('token');
+        $suppliedToken = (isset($_GET['token'])) ? $_GET['token'] : false;
+        if (!empty($requiredToken) && $suppliedToken !== $requiredToken) {
+            msg("Token doesn't match for feedaggregator");
+            return true;
+        }
+
         // Get the feed list.
         $feeds = file(fullpath($conf['tmpdir'].'/feedaggregator.csv'));
 
@@ -44,6 +52,8 @@ class action_plugin_feedaggregator extends DokuWiki_Action_Plugin {
         $simplepie = new FeedParser();
         $ua = 'Mozilla/4.0 (compatible; DokuWiki feedaggregator plugin '.wl('', '', true).')';
         $simplepie->set_useragent($ua);
+        $simplepie->force_feed($this->getConf('force_feed'));
+        $simplepie->force_fsockopen($this->getConf('force_fsockopen'));
         $simplepie->set_feed_url($feeds);
 
         // Set up caching.
